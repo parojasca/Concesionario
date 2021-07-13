@@ -8,11 +8,28 @@ import { Producto } from '../clases/producto';
 })
 export class ProductoService {
 
-  private baseURL = "http://192.168.0.11:8080/api/v1/productos"
+  private baseURL = "http://localhost:8080/api/v1/"
 
   constructor(private httpClient: HttpClient) { }
 
   getProductList(): Observable<Producto[]>{
-    return this.httpClient.get<Producto[]>(`${this.baseURL}`);
+    return this.httpClient.get<Producto[]>(`${this.baseURL}productos`);
   }
+
+  createProduct(producto: Producto): Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}crearProducto`, producto )
+  }
+
+  getProductById(id: number): Observable<Producto>{
+    return this.httpClient.get<Producto>(`${this.baseURL}actualizarProducto/${id}`);
+  }
+
+  updateProduct(id: number, producto: Producto): Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}actualizarProducto/${id}`, producto )
+  }
+
+  deleteProduct(id: number): Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
+
 }

@@ -7,6 +7,7 @@
             <th>Cantidad</th>
             <th>Fecha Ingreso</th>
             <th>Usuario registro</th>
+            <th>Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +16,9 @@
             <td>{{producto.cantidad}}</td>
             <td>{{producto.fechaIngreso}}</td>
             <td>{{producto.nombre}}</td>
+            <td>
+                <button (click) = "updateProduct(producto.id)" class="btn btn-info">Actualizar</button>
+            </td>
         </tr>
     </tbody>
 </table>
